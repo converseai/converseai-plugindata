@@ -1,0 +1,17 @@
+{
+  "name": "converseai-plugindata",
+  "version": "1.0.0",
+  "description": "A nodejs library to help connect to and from the Converse AI platform.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/*"
+  },
+  "author": "converse.ai",
+  "license": "MIT",
+  "dependencies": {
+    "grpc": "^1.4.1"
+  },
+  "devDependencies": {
+    "mocha": "^3.4.2"
+  }
+}
