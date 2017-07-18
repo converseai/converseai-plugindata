@@ -7,6 +7,7 @@ module.exports = (function(){
       file: 'github.com/converseai/service/plugindata/datamanagement.proto'
     });
 
-    return new proto.plugindata.DataManagement(`plugindata.${host}:443`, grpc.credentials.createSsl());
+    var deadline =  new Date().setTime(new Date().getTime() + (3600 * 1000)).toString();
+    return new proto.plugindata.DataManagement(`plugindata.${host}:443`, grpc.credentials.createSsl(), {deadline: deadline});
   }
 })();
