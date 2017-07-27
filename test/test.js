@@ -3,7 +3,7 @@ const assert = require('assert');
 describe('Client', function () {
   var client;
   before(function(){
-    client = require('../')('staging');
+    client = require('../')('');
     console.log(client);
   })
 

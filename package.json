@@ -1,12 +1,16 @@
 {
-  "name": "converseai-plugindata",
-  "version": "1.0.0",
-  "description": "A nodejs library to help connect to and from the Converse AI platform.",
+  "name": "@converseai/plugindata",
+  "version": "1.0.1",
+  "description": "A nodejs library to help connect to and from the Converse AI platform via gRPC.",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/converseai/converseai-plugindata.git"
+  },
   "scripts": {
     "test": "mocha test/*"
   },
-  "author": "converse.ai",
+  "author": "Converse AI",
   "license": "MIT",
   "dependencies": {
     "grpc": "^1.4.1"
