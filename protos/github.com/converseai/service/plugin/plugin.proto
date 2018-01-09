@@ -26,7 +26,7 @@ message Caller {
 	string installUUID = 5;
 	string pluginUUID = 6;
 	CallToken callToken = 7; // this is set by the server
-  string revision = 8; 
+  string revision = 8;
 }
 
 message CallToken {
@@ -45,4 +45,6 @@ message OAuth2Data {
 	string refresh_token  = 3;
 	int32  expires_in = 4;
 	string grant_type = 5;
+  map<string,string> metadata = 6;
+  string redirect_uri = 7;
 }

@@ -23,13 +23,34 @@ message OAuth2InfoResponse {
 	base.CallError error = 2;
 }
 
+message OAuth2InfoRequest {
+  plugin.Caller caller = 1;
+  plugin.OAuthType oAuthType = 2;
+}
+
+message OAuth2InfoResponse {
+  plugin.OAuth2Data oAuth2Data = 1;
+  base.CallError error = 2;
+}
+
+message OAuth2UpdateRequest {
+  plugin.Caller caller = 1;
+  plugin.OAuthType oAuthType = 2;
+  plugin.OAuth2Data oAuth2Data = 3;
+}
+
 message PluginKeysRequest {
 	plugin.Caller caller = 1;
 }
 
 message PluginKeysResponse {
-    map<string,string> keys = 1;
+  map<string,string> keys = 1;
 	base.CallError error = 2;
+}
+
+message SetPluginKeysRequest {
+  plugin.Caller caller = 1;
+  map<string,string> keys = 2;
 }
 
 message LocalDataRequest {
@@ -40,8 +61,8 @@ message LocalDataRequest {
 }
 
 message PluginLocalDataResponse {
-    plugin.ExecStatus status = 1;
-    bytes data = 2;
+  plugin.ExecStatus status = 1;
+  bytes data = 2;
 	base.CallError error = 3;
 }
 
@@ -95,24 +116,26 @@ message StreamLogsResponse {
 	plugin.ExecStatus status = 1;
 	PluginLogRecord record = 2;
 	base.CallError error = 3;
-
 }
 
 service DataManagement{
-	rpc GetPluginOAuth2Info(OAuth2InfoRequest) returns (OAuth2InfoResponse){};
-	rpc GetPluginPrivateKeys(PluginKeysRequest) returns (PluginKeysResponse){};
-	rpc StorePluginLocalData(LocalDataRequest) returns (PluginLocalDataResponse){};
-	rpc GetPluginLocalData(LocalDataRequest) returns (PluginLocalDataResponse){};
+  rpc GetPluginOAuth2Info(OAuth2InfoRequest) returns (OAuth2InfoResponse){};
+  rpc UpdatePluginOAuth2Info(OAuth2UpdateRequest) returns (OAuth2UpdateResponse){};
+  rpc DeletePluginOAuth2Info(OAuth2InfoRequest) returns (OAuth2DeleteResponse){}
+  rpc GetPluginPrivateKeys(PluginKeysRequest) returns (PluginKeysResponse){};
+  rpc SetPluginPrivateKeys(SetPluginKeysRequest) returns (PluginKeysResponse){};
+  rpc GetPluginLocalData(LocalDataRequest) returns (PluginLocalDataResponse){};
+  rpc StorePluginLocalData(LocalDataRequest) returns (PluginLocalDataResponse){};
 
-	// Adds a log line into the DB logs are kept for a hour befire getting deleted
-	rpc AddLog(AddLogRequest) returns (AddLogResponse){};
+  // Adds a log line into the DB logs are kept for a hour befire getting deleted
+  rpc AddLog(AddLogRequest) returns (AddLogResponse){};
 
 
-	// Upload the plugin node code on to converse
-	rpc UploadPluginCode(stream PluginCodeRequest) returns (PluginCodeResponse){};
+  // Upload the plugin node code on to converse
+  rpc UploadPluginCode(stream PluginCodeRequest) returns (PluginCodeResponse){};
 
-	// Streams the logs max runtime streaming is 10 mins. if there is no data for 1 min the stream is closed as well
-	// This should be only used at development time for debug purposes, the logs are not kept for more than a hour
-	// If you need log retention, please make sure that you get your plugis to send logs to your own logging system
-	rpc StreamLogs(GetLogsRequest) returns (stream StreamLogsResponse){};
+  // Streams the logs max runtime streaming is 10 mins. if there is no data for 1 min the stream is closed as well
+  // This should be only used at development time for debug purposes, the logs are not kept for more than a hour
+  // If you need log retention, please make sure that you get your plugis to send logs to your own logging system
+  rpc StreamLogs(GetLogsRequest) returns (stream StreamLogsResponse){};
 }
