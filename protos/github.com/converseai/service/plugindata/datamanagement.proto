@@ -29,6 +29,10 @@ message OAuth2UpdateRequest {
   plugin.OAuth2Data oAuth2Data = 3;
 }
 
+message OAuth2DeleteResponse {
+  base.CallError error = 1;
+}
+
 message PluginKeysRequest {
 	plugin.Caller caller = 1;
 }
