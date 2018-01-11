@@ -67,8 +67,8 @@ message PluginLocalDataResponse {
 }
 
 message PluginCodeRequest {
-    oneof codeData {
-    	plugin.Caller caller = 1;
+  oneof codeData {
+  	plugin.Caller caller = 1;
 		bytes data = 2;
 	}
 }
@@ -79,7 +79,7 @@ message PluginCodeResponse {
 }
 
 enum LogType {
-    INFO = 0;
+  INFO = 0;
 	DEBUG = 1;
 	ERROR = 2;
 }
@@ -92,8 +92,8 @@ message PluginLogRecord {
 
 message AddLogRequest {
   oneof auth {
-				plugin.Caller caller = 1;
-				string appToken = 2;
+		plugin.Caller caller = 1;
+		string appToken = 2;
 	}
 	PluginLogRecord logRecord = 3;
 }

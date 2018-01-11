@@ -1,5 +1,5 @@
 module.exports = (function(){
-  return function(host = 'converse.ai') {
+  return function(host = 'plugindata.converse.ai:443') {
     const grpc = require('grpc');
     const path = require('path');
     const proto = grpc.load({
@@ -8,6 +8,6 @@ module.exports = (function(){
     });
 
     var deadline =  new Date().setTime(new Date().getTime() + (3600 * 1000)).toString();
-    return new proto.plugindata.DataManagement(`plugindata.${host}:443`, grpc.credentials.createSsl(), {deadline: deadline});
+    return new proto.plugindata.DataManagement(host, grpc.credentials.createSsl(), {deadline: deadline});
   }
 })();

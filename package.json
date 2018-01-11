@@ -12,10 +12,11 @@
   },
   "author": "Converse AI",
   "license": "MIT",
-  "dependencies": {
-    "grpc": "^1.4.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "mocha": "^3.4.2"
+  },
+  "optionalDependencies": {
+    "grpc": "^1.8.0"
   }
 }
