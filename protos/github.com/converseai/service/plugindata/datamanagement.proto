@@ -14,16 +14,6 @@ enum DataScope {
 }
 
 message OAuth2InfoRequest {
-	plugin.Caller caller = 1;
-	plugin.OAuthType oauthType = 2;
-}
-
-message OAuth2InfoResponse {
-	plugin.OAuth2Data OAuth2Data = 1;
-	base.CallError error = 2;
-}
-
-message OAuth2InfoRequest {
   plugin.Caller caller = 1;
   plugin.OAuthType oAuthType = 2;
 }
