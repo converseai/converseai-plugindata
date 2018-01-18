@@ -69,11 +69,13 @@ message PluginCodeRequest {
         plugin.Caller caller = 1;
         bytes data = 2;
     }
+    int32 majorVersion = 3;
 }
 
 message PluginCodeResponse {
     base.CallError error = 1;
     plugin.ExecStatus status = 2;
+    string runtimeVersion = 3;
 }
 
 enum LogType {
