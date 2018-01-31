@@ -1,6 +1,6 @@
 {
   "name": "@converseai/plugindata",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A nodejs library to help connect to and from the Converse AI platform via gRPC.",
   "main": "index.js",
   "repository": {
