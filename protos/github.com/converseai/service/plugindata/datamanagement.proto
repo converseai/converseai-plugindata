@@ -22,6 +22,17 @@ message OAuth2InfoResponse {
     base.CallError error = 2;
 }
 
+message OAuth2CreateRequest {
+    plugin.Caller caller = 1;
+    plugin.OAuthType oAuthType = 2;
+    plugin.OAuth2Data oAuth2Data = 3;
+}
+
+message OAuth2CreateResponse {
+    base.CallError error = 1;
+    plugin.OAuth2Data oAuth2Data = 2;
+}
+
 message OAuth2UpdateRequest {
     plugin.Caller caller = 1;
     plugin.OAuthType oAuthType = 2;
@@ -122,6 +133,7 @@ message StreamLogsResponse {
 
 service DataManagement{
     rpc GetPluginOAuth2Info(OAuth2InfoRequest) returns (OAuth2InfoResponse){};
+    rpc CreatePluginOAuth2Info(OAuth2CreateRequest) returns (OAuth2CreateResponse){};
     rpc UpdatePluginOAuth2Info(OAuth2UpdateRequest) returns (OAuth2UpdateResponse){};
     rpc DeletePluginOAuth2Info(OAuth2InfoRequest) returns (OAuth2DeleteResponse){}
     rpc GetPluginPrivateKeys(PluginKeysRequest) returns (PluginKeysResponse){};
